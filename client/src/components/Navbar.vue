@@ -2,7 +2,9 @@
 <nav class="nav">
     <div class="nav__container">
         <div class="nav__logo">
-            <img src="../assets/logo.png" alt="logo" />
+            <RouterLink to="/">
+                <img src="../assets/logo.png" alt="logo" />
+            </RouterLink>
         </div>
         <div class="nav__links">
             <ul>
@@ -23,7 +25,7 @@ import { RouterLink } from 'vue-router';
 const currentPath = ref(window.location.pathname);
 
 const navLinks = [
-    { text: 'Shop', path: '/' },
+    { text: 'Shop', path: '/shop' },
     { text: 'Manage Products', path: '/manage-products' },
     { text: 'Cart', path: '/cart' }
 ]
@@ -44,14 +46,41 @@ currentPath.value = newPath;
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
-    margin: 0 18rem;
+    margin: 0 8rem;
+}
+
+.nav__logo {
+    width: 15rem;
+    height: 8rem;
+}
+
+.nav__logo img {
+    position: relative;
+    width: 130%;
+    height: 10rem;
+    object-fit: cover;
+    transform: translateY(-1rem);
 }
 
 ul {
     display: flex;
+    align-items: center;
     gap: 4rem;
     list-style-type: none;
     text-decoration: none;
+    width: 100%;
 }
 
+li {
+    padding: 0 2rem;
+    font-size: 1.2rem;
+}
+
+a {
+    min-width: 8rem;
+}
+
+li:nth-child(2) {
+    margin-left: -2rem;
+}
 </style>

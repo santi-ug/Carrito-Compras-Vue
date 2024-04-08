@@ -3,10 +3,15 @@ import { createRouter, createWebHistory } from "vue-router";
 import Cart from "./views/Cart.vue";
 import ManageProducts from "./views/ManageProducts.vue";
 import Shop from "./views/Shop.vue";
+import Home from "./views/Home.vue";
 
 const routes = [
     {
         path: "/",
+        component: Home,
+    },
+    {
+        path: "/shop",
         component: Shop,
     },
     {
