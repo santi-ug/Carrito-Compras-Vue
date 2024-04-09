@@ -17,10 +17,9 @@
 </template>
 
 <script setup>
-import Loading from '../components/Loading.vue';	
-import ProductCard from '../components/ProductCard.vue';
-import ProductModal from '../components/ProductModal.vue';
 import { ref } from 'vue';
+import Loading from '../components/Loading.vue';
+import ProductCard from '../components/ProductCard.vue';
 
 const loading = ref(true);
 const products = ref([]);

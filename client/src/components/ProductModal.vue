@@ -3,6 +3,7 @@ import { ref } from 'vue';
 import { addCartProduct, cartKey } from '../utils.js';
 
 const modalVisible = ref(true);
+const amt = ref(1);
 
 const props = defineProps({
     product: {
@@ -41,26 +42,25 @@ const closeFunctions = () => {
 const emit = defineEmits(['closeModal']);
 
 const increaseQuantity = () => {
-    props.product.quantity++;
+    amt.value++;
 }
 
 const decreaseQuantity = () => {
-    if (props.product.quantity > 1) {
-        props.product.quantity--;
+    if (amt.value > 1) {
+        amt.value--;
     }
 }
 
 const resetQuantity = () => {
-    props.product.quantity = 1;
+    amt.value = 1;
 }
 
 // Cart Logic
 const cart = ref(JSON.parse(localStorage.getItem(cartKey)));
 
 const addToCart = () => {
-    console.log('Adding to cart');
     console.log(props.product);
-    addCartProduct(props.product, cart.value);
+    addCartProduct(props.product, cart.value, amt.value);
 }
 
 console.log(props.product);
@@ -77,7 +77,7 @@ console.log(props.product);
                 <small v-if="product.expiration">Expires: {{ product.expiration }}</small>
                 <p>${{ product.price }}</p>
                 <button class="remove" @click="decreaseQuantity" >-</button>
-                <input v-model="props.product.quantity">
+                <input v-model="amt">
                 <button class="add" @click="increaseQuantity" >+</button>
             </div>
             <button class="addToCart" @click="addToCart">Add to Cart</button>
